@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    input[type="checkbox"],
+    input[type="radio"] {
+        position: absolute;
+        left: -9999px
+    }
+    
+    input[type="checkbox"]+label::before {
+        content: "\a0";
+        display: inline-block;
+        vertical-align: text-bottom;
+        width: .8em;
+        height: .8em;
+        margin-right: .2em;
+        border: 0.1em solid  rgb(215,62,51);
+        border-radius: .2em;
+        text-indent: .1em;
+        line-height: 65%;
+    }
+    
+    input[type="checkbox"]:checked+label::before {
+        content: "\2713";
+        color: rgb(215,62,51);
+    }
+
+    input[type="radio"]+label::before{
+        content: "\a0";
+        display: inline-block;
+        vertical-align: text-bottom;
+        width: .4em;
+        height:.4em;
+        padding: .2em;
+        border:0.1em solid  rgb(215,62,51);
+        border-radius: 50%;
+        margin-right: .2em
+    }
+    input[type="radio"]:checked+label::before{
+        background-clip: content-box; 
+        background-color: rgb(215,62,51);
+    }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset class="checkbox">
+            <input type="checkbox" name="checkbox1" id="checkbox1" value="1">
+            <label for="checkbox1" class="label_checkbox">选我选我</label>
+            <input type="checkbox" name="checkbox2" id="checkbox2" value="1">
+            <label for="checkbox2" class="label_checkbox">选我选我</label>
+            <input type="checkbox" name="checkbox3" id="checkbox3" value="1">
+            <label for="checkbox3" class="label_checkbox">选我选我</label>
+        </fieldset>
+        <fieldset class="radio">
+            <input type="radio" name="radio1" id="radio1" value="1" checked="checked">
+            <label for="radio1" class="label_radio">选我选我</label>
+            <input type="radio" name="radio1" id="radio2" value="1">
+            <label for="radio2" class="label_radio">选我选我</label>
+            <input type="radio" name="radio1" id="radio3" value="1">
+            <label for="radio3" class="label_radio">选我选我</label>
+        </fieldset>
+    </form>
+</body>
+
+</html>
