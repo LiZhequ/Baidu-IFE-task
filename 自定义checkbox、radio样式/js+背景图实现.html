@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    input[type="checkbox"],
+    input[type="radio"] {
+        position: absolute;
+        left: -9999px;
+    }
+    
+    span {
+        vertical-align: middle;
+    }
+    
+    label {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url(./sprite.png);
+        vertical-align: middle;
+    }
+    
+    .label_checkbox {
+        background-position: -25px -31px;
+    }
+    
+    .label_radio {
+        background-position: -24px -10px;
+    }
+    
+    .label_checkbox_checked {
+        background-position: -59px -31px;
+    }
+    
+    .label_radio_checked {
+        background-position: -59px -10px;
+    }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset id="checkbox">
+            <input type="checkbox" name="checkbox1" id="checkbox1" value="1">
+            <label for="checkbox1" class="label_checkbox"></label><span>选我选我</span>
+            <input type="checkbox" name="checkbox2" id="checkbox2" value="1">
+            <label for="checkbox2" class="label_checkbox"></label><span>选我选我</span>
+            <input type="checkbox" name="checkbox3" id="checkbox3" value="1">
+            <label for="checkbox3" class="label_checkbox"></label><span>选我选我</span>
+        </fieldset>
+        <fieldset id="radio">
+            <input type="radio" name="radio1" id="radio1" value="1" checked="checked">
+            <label for="radio1" class="label_radio_checked"></label><span>选我选我</span>
+            <input type="radio" name="radio1" id="radio2" value="1">
+            <label for="radio2" class="label_radio"></label><span>选我选我</span>
+            <input type="radio" name="radio1" id="radio3" value="1">
+            <label for="radio3" class="label_radio"></label><span>选我选我</span>
+        </fieldset>
+    </form>
+    <script type="text/javascript" src="./js+背景图实现.js"></script>
+</body>
+
+</html>
