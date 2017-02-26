@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#">
+        <fieldset>
+            <P>检查是否为手机号</P>
+            <input id="phoneNum" type="text">
+            <button id="checkButton1">check</button>
+            <p>结果</p>
+            <input id="output1" type="text">
+        </fieldset>
+        <fieldset>
+            <p>检查是否有相邻重复单词()</p>
+            <input id="string" type="text">
+            <button id="checkButton2">check</button>
+            <p>结果</p>
+            <input id="output2" type="text">
+        </fieldset>
+    </form>
+    <script type="text/javascript">
+    function check(inPut, output, RegExp) {
+        var result = RegExp.test(inPut.value);
+        output.value = result;
+    }
+
+    var phoneNum = document.getElementById('phoneNum');
+    var outPut1 = document.getElementById('output1');
+    var checkButton1 = document.getElementById('checkButton1');
+    var string = document.getElementById('string');
+    var output2 = document.getElementById('output2');
+    var checkButton2 = document.getElementById('checkButton2');
+
+    checkButton1.onclick = function() {
+        check(phoneNum, output1, /^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\d{8}$/)
+    };
+
+    checkButton2.onclick = function() {
+        check(string, output2, /(?:^|\s)([a-zA-Z]+)\s+\1(?:$|\s)/)
+    };
+    </script>
+</body>
+
+</html>
