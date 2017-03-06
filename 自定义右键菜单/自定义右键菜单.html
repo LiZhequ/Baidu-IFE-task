@@ -1,0 +1,103 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自定义右键菜单</title>
+    <style type="text/css">
+    #menuArea {
+        margin: 0;
+        padding: 0;
+        border: 2px solid #ccc;
+        height: 200px;
+    }
+    
+    #menuArea p {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        line-height: 200px;
+        text-align: center;
+    }
+    
+    #customMenu {
+        position: absolute;
+        visibility: hidden;
+        margin: 0;
+        padding: 3px;
+        background-color: #F6F6F6;
+        border: 1px solid #ccc;
+        list-style: none;
+    }
+    
+    #customMenu li {
+        background-color: #F6F6F6;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="menuArea">
+        <p>right click to see a custom menu </p>
+    </div>
+    <ul id="customMenu">
+        <li>menu item1</li>
+        <li>menu item2</li>
+    </ul>
+    <script type="text/javascript">
+    function addHandler(el, type, handler) {
+        if (el.addEventListener) {
+            el.addEventListener(type, handler, false);
+        } else if (el.attachEvent) {
+            el.attachEvent("on" + type, handler);
+        } else {
+            el["on" + type] = handler;
+        }
+    }
+
+    function getPosition(element) {
+        var actualLeft = element.offsetLeft,
+            actualTop = element.offsetTop,
+            current = element.offsetParent;
+        while (current !== null) {
+            actualLeft += current.offsetLeft;
+            actualTop += current.offsetTop;
+            current = current.offsetParent;
+        }
+        return {
+            left: actualLeft,
+            top: actualTop
+        };
+    }
+    var menuArea = document.getElementById("menuArea");
+
+    addHandler(menuArea, "contextmenu", function(event) {
+        event = event || window.event;
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+
+        var customMenu = document.getElementById("customMenu");
+        if (menuArea.offsetHeight + getPosition(menuArea).top - event.clientY < customMenu.offsetHeight) {
+
+            customMenu.style.top = event.clientY - customMenu.offsetHeight + "px";
+        } else {
+            customMenu.style.top = event.clientY + "px";
+        }
+        if (menuArea.offsetWidth + getPosition(menuArea).left - event.clientX < customMenu.offsetWidth) {
+            customMenu.style.left = event.clientX - customMenu.offsetWidth + "px";
+        } else {
+            customMenu.style.left = event.clientX + "px";
+        }
+        customMenu.style.visibility = "visible"
+    })
+
+    addHandler(document, "click", function(event) {
+        document.getElementById("customMenu").style.visibility = "hidden";
+    })
+    </script>
+</body>
+
+</html>
